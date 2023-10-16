@@ -3,15 +3,14 @@
 /**
  * main - Entry point
  *
- * This program  prints the alphabet in
- * in lowercase, followed by a new line, using only putchar two times.
- *
+ * This program prints the lowercase alphabet
+ * followed by a newline, using only putchar twice.
  *
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-    char c:
+    char c;
 
     for (c = 'a'; c <= 'z'; c++)
         putchar(c);
@@ -20,4 +19,5 @@ int main(void)
 
     return (0);
 }
+
   
