@@ -14,7 +14,7 @@ int main(){
 
   for(r = "a", r <= "z", ++r){
     if(r != "q" && r != "e"){
-      putchar(c);
+      putchar(r);
     }
   }
   putchar("\n");
