@@ -1,17 +1,20 @@
-#include <stdio.h>
 #include "main.h"
 
 /**
- * print_putchar - Prints "_putchar" followed by a new line
+ * main - Entry point, prints "_putchar" followed by a new line
+ *
+ * Return: Always 0 (Success)
  */
-void print_putchar(void)
+int main(void)
 {
-    char *str = "_putchar\n";
+    char *message = "_putchar\n";
     int i = 0;
 
-    while (str[i] != '\0')
+    while (message[i])
     {
-        _putchar(str[i]);
+        _putchar(message[i]);
         i++;
     }
+
+    return (0);
 }
