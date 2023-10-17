@@ -5,10 +5,10 @@
  * This program prints the alphabet n lowercase, 
  * followed by a new line using putchar twice
  *
- *
+ * Return: 0 if successful
  */
 
-int main(){
+int main(void){
 
   char r;
 
@@ -18,5 +18,5 @@ int main(){
     }
   }
   putchar('\n');
-  return 0;
+  return (0);
 }
