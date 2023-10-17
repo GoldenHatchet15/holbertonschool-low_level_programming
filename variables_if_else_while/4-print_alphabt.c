@@ -2,23 +2,23 @@
 
 /**
  * main - Entry point
- * 
- * This program prints the alphabet n lowercase, 
+ *
+ * This program prints the alphabet in lowercase, 
  * followed by a new line using putchar twice
  *
  * Return: 0 if successful
  */
 int main(void)
 {
-  char r;
+    char r;
 
-  for(r = 'a'; r <= 'z'; ++r)
+    for (r = 'a'; r <= 'z'; ++r)
     {
-    if(r != 'q' && r != 'e')
-      {
-      putchar(r);
+        if (r != 'q' && r != 'e')
+        {
+            putchar(r);
+        }
     }
-  }
-  putchar('\n');
-  return (0);
+    putchar('\n');
+    return (0);
 }
