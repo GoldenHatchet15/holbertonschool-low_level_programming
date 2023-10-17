@@ -10,7 +10,7 @@
 
 int main(){
 
-  char a;
+  char r;
 
   for(r = "a", r <= "z", ++r){
     if(r != "q" && r != "e"){
