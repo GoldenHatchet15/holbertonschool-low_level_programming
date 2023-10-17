@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /**
  * main - Entry point
  * 
@@ -7,13 +8,14 @@
  *
  * Return: 0 if successful
  */
-
-int main(void){
-
+int main(void)
+{
   char r;
 
-  for(r = 'a'; r <= 'z'; ++r){
-    if(r != 'q' && r != 'e'){
+  for(r = 'a'; r <= 'z'; ++r)
+    {
+    if(r != 'q' && r != 'e')
+      {
       putchar(r);
     }
   }
