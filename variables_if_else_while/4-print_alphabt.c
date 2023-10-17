@@ -1,9 +1,9 @@
 #include <stdio.h>
 /**
- *
+ * main - Entry point
  * 
- *
- *
+ * This program prints the alphabet n lowercase, 
+ * followed by a new line using putchar twice
  *
  *
  */
