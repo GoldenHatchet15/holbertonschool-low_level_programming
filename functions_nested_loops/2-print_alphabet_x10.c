@@ -11,11 +11,11 @@ void print_alphabet_x10(void)
 
     while (count < 10)
     {
-        c = 'a';  // Corrected line
-        while (c <= 'z')  // Corrected line
+        c = 'a';  /* Corrected line */
+        while (c <= 'z')  /* Corrected line */
         {
             _putchar(c);
-            c++;  // Increment the character
+            c++;  /* Increment the character */
         }
         _putchar('\n');
         count++;
