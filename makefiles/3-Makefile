@@ -1,5 +1,5 @@
 CC = gcc                             # Compiler
-SRC = $(wildcard *.c)                # Finds all .c files in the directory
+SRC = $ main.c school.c                # Finds all .c files in the directory
 OBJ = $(SRC:.c=.o)                   # Converts .c filenames to .o
 NAME = school                        # Name of the executable
 RM = rm -f                           # Command to remove files
@@ -7,16 +7,13 @@ RM = rm -f                           # Command to remove files
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $@ -o $^
 
 %.o: %.c
 	$(CC) -c $< -o $@
 
 clean:
-	-$(RM) $(NAME)
-	-$(RM) *~
-	-$(RM) \#*\#
-	-$(RM) *.swp
+	-$(RM) $(OBJ) $(NAME) *~ .*~
 
 oclean:
 	-$(RM) $(OBJ)
@@ -25,4 +22,4 @@ fclean: clean oclean
 
 re: fclean all
 
-.PHONY: all clean oclean fclean re
+.PHONY: clean
