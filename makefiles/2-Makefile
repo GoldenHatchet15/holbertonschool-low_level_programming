@@ -1,0 +1,15 @@
+CC = gcc                           # Compiler
+SRC = $(wildcard *.c)              # All .c files in the current directory
+OBJ = $(SRC:.c=.o)                 # Object files generated from .c files
+NAME = school                      # Name of the executable
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(NAME)
