@@ -1,0 +1,28 @@
+CC = gcc                                          # The compiler to be used
+SRC = $(wildcard *.c)                             # All .c files in the current directory
+OBJ = $(SRC:.c=.o)                                # Object files generated from .c files
+NAME = school                                     # Name of the executable
+RM = rm -f                                        # The program to delete files
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) -c $< -o $@
+
+clean:
+	-$(RM) $(NAME)
+	-$(RM) *~
+	-$(RM) \#*\#
+	-$(RM) *.swp
+
+oclean:
+	-$(RM) $(OBJ)
+
+fclean: clean oclean
+
+re: fclean all
+
+.PHONY: all clean oclean fclean re
