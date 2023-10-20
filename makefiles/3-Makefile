@@ -2,24 +2,24 @@ CC = gcc
 SRC = main.c school.c                
 OBJ = $(SRC:.c=.o)                   
 NAME = school                        
-RM = rm -f                          
+RM = rm -f  # It looks like RM variable was not defined in the provided Makefile
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $@ $^
+	$(CC) $^ -o $@
 
 %.o: %.c
 	$(CC) -c $< -o $@
 
 clean:
-	-$(RM) *~ \#*\# $(NAME)
+	$(RM) $(OBJ) $(NAME) *~ .*~
 
 oclean:
-	-$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean oclean
 
 re: fclean all
 
-.PHONY: all clean oclean fclean re
+.PHONY: clean
