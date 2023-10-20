@@ -1,9 +1,7 @@
-CC = gcc                             # Compiler
-SRC = main.c school.c                # Finds all .c files in the directory
-OBJ = $(SRC:.c=.o)                   # Converts .c filenames to .o
-NAME = school                        # Name of the executable
-RM = rm -f                           # Command to remove files
-
+CC = gcc                             
+SRC = main.c school.c                
+OBJ = $(SRC:.c=.o)                   
+NAME = school                        
 all: $(NAME)
 
 $(NAME): $(OBJ)
