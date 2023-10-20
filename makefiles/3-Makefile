@@ -1,13 +1,13 @@
-CC = gcc                                          # The compiler to be used
-SRC = $(wildcard *.c)                             # All .c files in the current directory
-OBJ = $(SRC:.c=.o)                                # Object files generated from .c files
-NAME = school                                     # Name of the executable
-RM = rm -f                                        # The program to delete files
+CC = gcc                           # Compiler
+SRC = $(wildcard *.c)              # Finds all .c files in the directory
+OBJ = $(SRC:.c=.o)                 # Converts .c filenames to .o
+NAME = school                      # Name of the executable
+RM = rm -f                         # Command to remove files
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) -o $(NAME) $(OBJ)
+	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
 	$(CC) -c $< -o $@
