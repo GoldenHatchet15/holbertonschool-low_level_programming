@@ -11,7 +11,7 @@ $(NAME): $(OBJ)
 	$(CC) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ) $(school.c) *~ .*~
+	$(RM) $(OBJ) $(NAME) *~ .*~
 
 oclean:
 	-$(RM) $(OBJ)
