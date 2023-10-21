@@ -1,5 +1,5 @@
 CC = gcc                             
-SRC = main.c school.c                
+SRC = main.c othername.c             
 OBJ = $(SRC:.c=.o)                   
 NAME = school                        
 RM = rm -f  
@@ -22,4 +22,4 @@ fclean: clean oclean
 
 re: fclean all
 
-.PHONY: clean 
+.PHONY: clean oclean fclean re
