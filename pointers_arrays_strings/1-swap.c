@@ -10,12 +10,12 @@
  */
 void swap_int(int *a, int *b)
 {
-    int temp;
+int temp;
 
-    if (a == NULL || b == NULL)  /* Check if the pointers are not null */
-        return;
+if (a == NULL || b == NULL)  /* Check if the pointers are not null */
+return;
 
-    temp = *a;  /* Store the value of 'a' in 'temp' */
-    *a = *b;    /* Assign the value of 'b' to 'a' */
-    *b = temp;  /* Assign the stored value in 'temp' to 'b' */
+temp = *a;  /* Store the value of 'a' in 'temp' */
+*a = *b;    /* Assign the value of 'b' to 'a' */
+*b = temp;  /* Assign the stored value in 'temp' to 'b' */
 }
