@@ -22,11 +22,15 @@ int _atoi(char *s)
 			started = 1;  /* Set flag to true */
 			res = (res * 10) + sign * (*s - '0');
 		}
-		else if (started)  /* Break loop if we've started processing numbers and encounter a non-number character */
+		else if (started)
+		{
+			/* Break loop if we've started processing numbers 
+			   and encounter a non-number character */
 			break;
+		}
 
 		s++;
 	}
 
-	return res;
+	return (res);
 }
