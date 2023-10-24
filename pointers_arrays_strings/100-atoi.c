@@ -24,7 +24,7 @@ int _atoi(char *s)
 		}
 		else if (started)
 		{
-			/* 
+			/*
 			 * Break loop if we've started processing numbers 
 			 * and encounter a non-number character 
 			 */
