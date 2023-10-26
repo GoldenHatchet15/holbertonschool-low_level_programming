@@ -7,18 +7,18 @@
  */
 void reverse_array(int *a, int n)
 {
-      int start = 0, end = n - 1;
-      int temp;
+	int start = 0, end = n - 1;
+	int temp;
 
-    while (start < end)
-    {
-      /*Swap the elements*/
-        temp = a[start];
-        a[start] = a[end];
-        a[end] = temp;
+	while (start < end)
+	{
+		// Swap the elements
+		temp = a[start];
+		a[start] = a[end];
+		a[end] = temp;
 
-        /*Move the pointers towards each other*/
-        start++;
-        end--;
-    }
+		// Move the pointers towards each other
+		start++;
+		end--;
+	}
 }
