@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stddef.h>
+
 /**
  * _strchr - locates a character in a string
  * @s: string to be searched
@@ -12,7 +13,7 @@ char *_strchr(char *s, char c)
 	{
 		if (*s == c)
 		{
-		  return (s);
+			return (s);
 		}
 		s++;
 	}
@@ -20,7 +21,7 @@ char *_strchr(char *s, char c)
 	/* Check if c is the null terminator */
 	if (*s == c)
 	{
-	  return (s);
+		return (s);
 	}
 
 	return (NULL);
