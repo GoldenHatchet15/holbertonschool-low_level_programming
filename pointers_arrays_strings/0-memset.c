@@ -1,23 +1,20 @@
 #include "main.h"
-#include <stdio.h>
 
-char *_memset(char *s, char b, unsigned int n) {
-  /* create a pointer to traverse the memory area */
-    char *ptr = s;
+/**
+ * _memset - fills the first n bytes of memory area pointed by s with byte b
+ * @s: memory area to be filled
+ * @b: byte to fill with
+ * @n: number of bytes to fill
+ * Return: pointer to the memory area s
+ */
+char *_memset(char *s, char b, unsigned int n)
+{
+    unsigned int i;
 
-    /* fill n bytes of memory with the constant byte b */
-    for (unsigned int i = 0; i < n; i++) {
-        *ptr = b;
-        ptr++;
+    for (i = 0; i < n; i++)
+    {
+        s[i] = b;
     }
 
-    /* return the original pointer */
     return (s);
-}
-
-int main() {
-    char str[10] = "Hello";
-    _memset(str, 'x', 3);
-    printf("%s\n", str);  /* Expected output: "xxxlo" */
-    return 0;
 }
