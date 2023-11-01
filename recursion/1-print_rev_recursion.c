@@ -14,10 +14,8 @@ void _print_rev_recursion(char *s)
 	{
 		return;
 	}
-	
 	/* Recursively move to the next character */
 	_print_rev_recursion(s + 1);
-	
 	/* Print the current character on the way back up */
 	printf("%c", *s);
 }
