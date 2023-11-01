@@ -21,11 +21,3 @@ void _print_rev_recursion(char *s)
 	/* Print the current character on the way back up */
 	printf("%c", *s);
 }
-
-int main(void)
-{
-	char str[] = "This is a reverse string";
-	_print_rev_recursion(str);
-	printf("\n");	/* Print a newline after the reversed string */
-	return(0);
-}
