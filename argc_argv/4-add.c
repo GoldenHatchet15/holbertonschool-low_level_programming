@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	for (i = 1; i < argc; i++)
 	{
 		num = strtol(argv[i], &endptr, 10);
-		if (*endptr != '\0') // if conversion from string to int failed */
+		if (*endptr != '\0') /* if conversion from string to int failed */
 		{
 			printf("Error\n");
 			return (1);
