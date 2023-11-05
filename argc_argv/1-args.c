@@ -9,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-    (void)argv; /* argv is unused, this is to avoid a compiler warning */
-    printf("%d\n", argc - 1); /* Print the number of actual arguments */
-    return 0;
+	(void)argv; /* argv is unused, this is to avoid a compiler warning */
+	printf("%d\n", argc - 1); /* Print the number of actual arguments */
+	return (0);
 }
