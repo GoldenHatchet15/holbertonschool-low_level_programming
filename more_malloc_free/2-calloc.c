@@ -1,0 +1,31 @@
+#include "main.h"
+
+/**
+ * _calloc - allocates memory for an array using malloc
+ * @nmemb: the number of elements in the array
+ * @size: the size of each element
+ *
+ * Return: pointr to allocatd memry, or NULL on failure or if nmemb or sz is 0
+ */
+void *_calloc(unsigned int nmemb, unsigned int size)
+{
+	void *memory;
+	unsigned int total_size;
+
+	/* Check if any input is 0, return NULL as per the standard calloc behavior */
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+
+	/* Calculate total size to allocate */
+	total_size = nmemb * size;
+
+	/* Allocate memory and check if malloc was successful */
+	memory = malloc(total_size);
+	if (memory == NULL)
+		return (NULL);
+
+	/* Set allocated memory to zero */
+	memset(memory, 0, total_size);
+
+	return (memory);
+}
