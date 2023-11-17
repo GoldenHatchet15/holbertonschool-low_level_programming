@@ -11,48 +11,48 @@
  */
 void print_all(const char * const format, ...)
 {
-    va_list args;
-    int i = 0, j = 0;
-    char *str, *sep = "";
-    const char *formats = "cifs";
+va_list args;
+int i = 0, j = 0;
+char *str, *sep = "";
+const char *formats = "cifs";
 
-    va_start(args, format);
+va_start(args, format);
 
-    while (format && format[i])
-    {
-        j = 0;
-        while (formats[j])
-        {
-            if (format[i] == formats[j])
-            {
-                printf("%s", sep);
-                switch (format[i])
-                {
-                    case 'c':
-                        printf("%c", va_arg(args, int));
-                        break;
-                    case 'i':
-                        printf("%d", va_arg(args, int));
-                        break;
-                    case 'f':
-                        printf("%f", va_arg(args, double));
-                        break;
-                    case 's':
-                        str = va_arg(args, char *);
-                        if (!str)
-                            str = "(nil)";
-                        printf("%s", str);
-                        break;
-                }
-                sep = ", ";
-                break;
-            }
-            j++;
-        }
-        i++;
-    }
+while (format && format[i])
+{
+j = 0;
+while (formats[j])
+{
+if (format[i] == formats[j])
+{
+printf("%s", sep);
+switch (format[i])
+{
+case 'c':
+printf("%c", va_arg(args, int));
+break;
+case 'i':
+printf("%d", va_arg(args, int));
+break;
+case 'f':
+printf("%f", va_arg(args, double));
+break;
+case 's':
+str = va_arg(args, char *);
+if (!str)
+str = "(nil)";
+printf("%s", str);
+break;
+}
+sep = ", ";
+break;
+}
+j++;
+}
+i++;
+}
 
-    va_end(args);
+va_end(args);
 
-    printf("\n");
+printf("\n");
 }
