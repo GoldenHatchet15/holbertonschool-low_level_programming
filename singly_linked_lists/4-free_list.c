@@ -10,15 +10,15 @@
  */
 void free_list(list_t *head)
 {
-    list_t *temp;
+list_t *temp;
 
-    while (head != NULL)
-    {
-        temp = head->next;  /* Save the reference to the next node */
+while (head != NULL)
+{
+temp = head->next;  /* Save the reference to the next node */
 
-        free(head->str);    /* Free the string in the current node */
-        free(head);         /* Free the current node */
+free(head->str);    /* Free the string in the current node */
+free(head);         /* Free the current node */
 
-        head = temp;        /* Move to the next node */
-    }
+head = temp;        /* Move to the next node */
+}
 }
