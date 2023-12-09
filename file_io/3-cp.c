@@ -70,7 +70,7 @@ return (0);
 * @fd: The file descriptor to close.
 * @filename: The name of the file associated with the file descriptor.
 */
-void close_file(int fd, char *filename)
+void close_file(int fd, char *file_to)
 {
 if (close(fd) < 0)
 {
