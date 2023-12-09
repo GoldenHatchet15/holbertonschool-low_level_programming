@@ -68,7 +68,7 @@ return (0);
 /**
 * close_file - Closes a file descriptor and handles errors.
 * @fd: The file descriptor to close.
-* @filename: The name of the file associated with the file descriptor.
+* @file_to: The name of the file associated with the file descriptor.
 */
 void close_file(int fd, char *file_to)
 {
@@ -87,7 +87,7 @@ exit(100);
  */
 void check_args(int argc, char *argv[])
 {
-  (void)argv; /*Suppress unused parameter warning*/
+(void)argv; /*Suppress unused parameter warning*/
 
 if (argc != 3)
 {
