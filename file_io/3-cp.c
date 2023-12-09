@@ -5,7 +5,7 @@
 
 #define BUF_SIZE 1024
 
-void close_file(int fd, char *filename);
+void close_file(int fd, char *file_to);
 void check_args(int argc, char *argv[]);
 
 /**
@@ -81,10 +81,10 @@ exit(100);
 }
 
 /**
-* check_args - Checks the number of arguments and handles errors.
-* @argc: The number of arguments.
-* @argv: An array of pointers to the arguments.
-*/
+ * check_args - Checks the number of arguments and handles errors.
+ * @argc: The number of arguments.
+ * @argv: An array of pointers to the arguments.
+ */
 void check_args(int argc, char *argv[])
 {
 if (argc != 3)
