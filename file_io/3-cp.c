@@ -5,9 +5,6 @@
 
 #define BUF_SIZE 1024
 
-void close_file(int fd, char *filename);
-void check_args(int argc, char *argv[]);
-
 /**
 * main - Copies the content of a file to another file.
 * @argc: The number of arguments.
@@ -65,30 +62,4 @@ close_file(fd_to, argv[2]);
 return (0);
 }
 
-/**
-* close_file - Closes a file descriptor and handles errors.
-* @fd: The file descriptor to close.
-* @filename: The name of the file associated with the file descriptor.
-*/
-void close_file(int fd, char *filename)
-{
-if (close(fd) < 0)
-{
-dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-exit(100);
-}
-}
 
-/**
-* check_args - Checks the number of arguments and handles errors.
-* @argc: The number of arguments.
-* @argv: An array of pointers to the arguments.
-*/
-void check_args(int argc, char *argv[])
-{
-if (argc != 3)
-{
-dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
-exit(97);
-}
-}
