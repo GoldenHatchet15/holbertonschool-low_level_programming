@@ -72,6 +72,7 @@ return (0);
 */
 void close_file(int fd, char *file_to)
 {
+(void)file_to;
 if (close(fd) < 0)
 {
 dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
