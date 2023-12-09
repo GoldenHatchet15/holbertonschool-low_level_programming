@@ -1,45 +1,21 @@
 #include "hash_tables.h"
 
-/* djb2 hash function */
-unsigned long int hash_djb2(const unsigned char *str)
-{
-unsigned long int hash = 5381;
-int c;
-
-while ((c = *str++))
-{
-hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
-}
-
-return (hash);
-}
-
-/* Function to create a hash table */
-hash_table_t *hash_table_create(unsigned long int size)
-{
-hash_table_t *new_table;
-unsigned long int i;
-
-new_table = malloc(sizeof(hash_table_t));
-if (new_table == NULL)
-return (NULL);
-
-new_table->array = malloc(sizeof(hash_node_t *) * size);
-if (new_table->array == NULL)
-{
-free(new_table);
-return (NULL);
-}
-
-for (i = 0; i < size; i++)
-new_table->array[i] = NULL;
-
-new_table->size = size;
-return (new_table);
-}
-
-/* Function to get the index of a key */
+/**
+* key_index - Gives you the index of a key.
+* @key: The key to find the index for.
+* @size: The size of the array of the hash table.
+*
+* This function calculates the index at which the key/value pair should be
+* stored in the array of the hash table, using the hash_djb2 function.
+*
+* Return: The index at which the key/value pair should be stored in the array
+* of the hash table.
+*/
 unsigned long int key_index(const unsigned char *key, unsigned long int size)
 {
-return (hash_djb2(key) % size);
+/* Calculate the hash value using hash_djb2 */
+unsigned long int hash_value = hash_djb2(key);
+
+/* Modulate to find the index within the array bounds */
+return (hash_value % size);
 }
