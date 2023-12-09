@@ -1,5 +1,8 @@
 #include "hash_tables.h"
 
+/* Prototype for helper function */
+static void free_node(hash_node_t *node);
+
 /**
 * hash_table_set - Adds an element to the hash table.
 * @ht: The hash table to add or update the key/value pair.
@@ -15,7 +18,7 @@ hash_node_t *new_node, *current_node;
 unsigned long int index;
 
 if (!ht || !key || strlen(key) == 0)
-return (0);
+return ((0));
 
 index = key_index((const unsigned char *)key, ht->size);
 
@@ -28,34 +31,42 @@ if (strcmp(current_node->key, key) == 0)
 {
 free(current_node->value);
 current_node->value = strdup(value);
-return (current_node->value != NULL);
+return ((current_node->value != NULL));
 }
 current_node = current_node->next;
 }
 
 new_node = malloc(sizeof(hash_node_t));
 if (!new_node)
-return (0);
+return ((0));
 
 new_node->key = strdup(key);
 if (!new_node->key)
-return (free_node(new_node), 0);
+
+{
+free_node(new_node);
+return (0);
+}
 
 new_node->value = strdup(value);
 if (!new_node->value)
-return (free_node(new_node), 0);
+
+{
+free_node(new_node);
+return (0);
+}
 
 new_node->next = ht->array[index];
 ht->array[index] = new_node;
 
-return (1);
+return ((1));
 }
 
 /**
 * free_node - Frees a node's memory.
 * @node: The node to be freed.
 */
-void free_node(hash_node_t *node)
+static void free_node(hash_node_t *node)
 
 {
 if (node)
@@ -66,3 +77,4 @@ free(node->value);
 free(node);
 }
 }
+
