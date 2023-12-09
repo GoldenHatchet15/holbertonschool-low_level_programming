@@ -2,67 +2,94 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/stat.h>
-#include <string.h>
 
 #define BUF_SIZE 1024
 
-void err_exit(int code, const char *format, ...) {
-va_list args;
-va_start(args, format);
-vfprintf(stderr, format, args);
-va_end(args);
-exit(code);
+void close_file(int fd, char *file_to);
+void check_args(int argc, char *argv[]);
+
+/**
+* main - Copies the content of a file to another file.
+* @argc: The number of arguments.
+* @argv: An array of pointers to the arguments.
+*
+* Return: 0 on success, or exits with specific codes on failure.
+*/
+int main(int argc, char *argv[])
+{
+int fd_from, fd_to, rd, wr;
+char buffer[BUF_SIZE];
+
+check_args(argc, argv); /* Check arguments count */
+
+/* Open the source file */
+fd_from = open(argv[1], O_RDONLY);
+if (fd_from < 0)
+{
+dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+exit(98);
 }
 
-int main(int argc, char *argv[]) {
-if (argc != 3) {
-err_exit(97, "Usage: cp file_from file_to\n");
+/* Open the destination file */
+fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+if (fd_to < 0)
+{
+close_file(fd_from, argv[1]);
+dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+exit(99);
 }
 
-const char *file_from = argv[1];
-const char *file_to = argv[2];
-
-struct stat file_from_stat;
-if (stat(file_from, &file_from_stat) != 0) {
-err_exit(98, "Error: Can't read from file %s\n", file_from);
-}
-
-int file_from_fd = open(file_from, O_RDONLY);
-if (file_from_fd == -1) {
-err_exit(98, "Error: Can't read from file %s\n", file_from);
-}
-
-int file_to_fd = open(file_to, O_CREAT | O_TRUNC | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-if (file_to_fd == -1) {
-close(file_from_fd);
-err_exit(99, "Error: Can't write to file %s\n", file_to);
-}
-
-char buf[BUF_SIZE];
-ssize_t bytes_read;
-while ((bytes_read = read(file_from_fd, buf, BUF_SIZE)) > 0) {
-if (write(file_to_fd, buf, bytes_read) != bytes_read) {
-close(file_from_fd);
-close(file_to_fd);
-err_exit(99, "Error: Can't write to file %s\n", file_to);
+/* Read from source and write to destination */
+while ((rd = read(fd_from, buffer, BUF_SIZE)) > 0)
+{
+wr = write(fd_to, buffer, rd);
+if (wr != rd)
+{
+close_file(fd_from, argv[1]);
+close_file(fd_to, argv[2]);
+dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+exit(99);
 }
 }
 
-if (bytes_read == -1) {
-close(file_from_fd);
-close(file_to_fd);
-err_exit(98, "Error: Can't read from file %s\n", file_from);
+if (rd < 0)
+{
+close_file(fd_from, argv[1]);
+close_file(fd_to, argv[2]);
+dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+exit(98);
 }
 
-if (close(file_from_fd) != 0) {
-close(file_to_fd);
-err_exit(100, "Error: Can't close fd %d\n", file_from_fd);
+close_file(fd_from, argv[1]);
+close_file(fd_to, argv[2]);
+return (0);
 }
 
-if (close(file_to_fd) != 0) {
-err_exit(100, "Error: Can't close fd %d\n", file_to_fd);
+/**
+* close_file - Closes a file descriptor and handles errors.
+* @fd: The file descriptor to close.
+* @filename: The name of the file associated with the file descriptor.
+*/
+void close_file(int fd, char *file_to)
+{
+(void)file_to;
+if (close(fd) < 0)
+{
+dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+exit(100);
+}
 }
 
-return 0;
+/**
+ * check_args - Checks the number of arguments and handles errors.
+ * @argc: The number of arguments.
+ * @argv: An array of pointers to the arguments.
+ */
+void check_args(int argc, char *argv[])
+{
+if (argc != 3)
+{
+dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", argv[0]);
+exit(97);
+}
 }
