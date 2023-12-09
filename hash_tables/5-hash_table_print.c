@@ -13,18 +13,21 @@
 */
 void hash_table_print(const hash_table_t *ht)
 {
+unsigned long int i; /* Declaration of loop counter */
+int comma_flag; /* Flag to manage comma printing */
+hash_node_t *node; /* Pointer to node in hash table */
+
 if (ht == NULL)
 {
 return; /* If the hash table is NULL, do nothing */
 }
 
-int comma_flag = 0; /* Flag to manage comma printing */
-
+comma_flag = 0; /* Initialize flag to manage comma printing */
 printf("{");
 
-for (unsigned long int i = 0; i < ht->size; ++i)
+for (i = 0; i < ht->size; ++i)
 {
-hash_node_t *node = ht->array[i]; /* Get list at this index of hash table */
+node = ht->array[i]; /* Get list at this index of hash table */
 
 while (node != NULL)
 {
