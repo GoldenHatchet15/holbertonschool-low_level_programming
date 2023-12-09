@@ -87,10 +87,13 @@ exit(100);
  */
 void check_args(int argc, char *argv[])
 {
+  (void)argv; /*Suppress unused parameter warning*/
+
 if (argc != 3)
 {
 dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 exit(97);
 }
 }
+
 
