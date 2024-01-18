@@ -27,7 +27,7 @@ printf("\n");
 * @size: The number of elements in the array
 * @value: The value to search for
 *
-* Return: The index where value is located, or -1 if not present or array is NULL
+* Return: index where value is located, or -1 if not present or array is NULL
 */
 int binary_search(int *array, size_t size, int value)
 {
