@@ -21,10 +21,10 @@ return (-1);
 
 for (i = 0; i < size; i++)
 {
-printf("Value checked array[%u] = [%d]\n",(unsigned int)i, array[i]);
+printf("Value checked array[%u] = [%d]\n", (unsigned int)i, array[i]);
 if (array[i] == value)
 {
-return (int)i;
+  return ((int)i);
 }
 }
 
